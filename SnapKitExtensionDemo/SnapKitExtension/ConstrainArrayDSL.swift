@@ -167,7 +167,7 @@ public struct ConstraintArrayDSL {
             for (preView, curView) in zip(self.array, self.array.dropFirst()) {
                 curView.snp.makeConstraints({ (make) in
                     if fixedItemLength != nil {
-                        make.width.equalTo(preView)
+                        make.width.equalTo(fixedItemLength!)
                     }
                     
                     make.top.equalTo(preView)

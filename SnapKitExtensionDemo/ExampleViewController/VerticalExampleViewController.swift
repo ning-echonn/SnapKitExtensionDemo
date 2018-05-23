@@ -47,6 +47,10 @@ class VerticalExampleViewController: UIViewController {
             btn.backgroundColor = UIColor.red
             self.view.addSubview(btn)
             btnArr.append(btn)
+            
+            btn.snp.makeConstraints({ (make) in
+                make.width.equalTo((i + 1) * 40)
+            })
 
         }
         
@@ -57,6 +61,9 @@ class VerticalExampleViewController: UIViewController {
         // topConstrainView 整个布局之上的view, 从topConstrainView.snp.bottom开始计算，
         // 比如,传入上面的label,则从 label.snp.bottom + edgeInset.top 开始排列， 默认为nil, 此时布局从 superview.snp.top + edgeInset.top 开始计算
         btnArr.snp.distributeViewsAlong(axisType: .vertical, fixedItemSpacing: 20, edgeInset: UIEdgeInsetsMake(10, 40, 0, 40), fixedItemLength: 30, topConstrainView: label)
+//        btnArr.snp.makeConstraints { (make) in
+//            make.width.equalTo(60)
+//        }
     }
     
     private func example2() {
@@ -92,5 +99,9 @@ class VerticalExampleViewController: UIViewController {
         // fixedItemLength 为nil 时， 可为每个view设置宽高，
         // 当然，也可以不设置宽度，但是对高度一些可以不设置，比如label、button
         btnArr.snp.distributeViewsAlong(axisType: .vertical, fixedItemSpacing: 30, edgeInset: UIEdgeInsetsMake(360, 20, 0, 20))
+        btnArr.snp.makeConstraints { (make) in
+            make.height.equalTo(30)
+            make.width.equalTo(60)
+        }
     }
 }

@@ -48,10 +48,16 @@ class HorizontalViewController: UIViewController {
             self.view.addSubview(btn)
             btnArr.append(btn)
             
+            btn.snp.makeConstraints({ (make) in
+                make.height.equalTo((i + 1) * 20)
+            })
         }
         
         // fixedItemLength 水平时，是每个view的固定宽度, 默认为 nil, 可不传，不传的例子见下面
         btnArr.snp.distributeViewsAlong(axisType: .horizontal, fixedItemSpacing: 20, edgeInset: UIEdgeInsetsMake(10, 20, 0, 20), fixedItemLength: 70, topConstrainView: label)
+//        btnArr.snp.makeConstraints { (make) in
+//            make.height.equalTo(60)
+//        }
     }
     
     private func example2() {
@@ -85,7 +91,7 @@ class HorizontalViewController: UIViewController {
         }
         
         // fixedItemLength 为nil 时， 可为每个view设置宽高，
-        // 当然，也可以不设置宽度，但是对高度一些可以不设置，比如label、button
+        // 当然，宽度可以不设置，但是对高度一些可以不设置，比如label、button
         btnArr.snp.distributeViewsAlong(axisType: .horizontal, fixedItemSpacing: 20, edgeInset: UIEdgeInsetsMake(360, 20, 0, 20))
     }
 
